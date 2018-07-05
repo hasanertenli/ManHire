@@ -1,19 +1,17 @@
 package com.example.ManHire.Entity;
 
-
 import lombok.Data;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name= "Customer")
 @EntityListeners(AuditingEntityListener.class)
 @Data
 public class Customer {
+
     @Id
     Long id;
 
@@ -29,5 +27,9 @@ public class Customer {
     public Long getId() {
         return id;
     }
+
+
+    @ManyToMany(mappedBy = "customerList")
+    List<Player> playerList;
 
 }

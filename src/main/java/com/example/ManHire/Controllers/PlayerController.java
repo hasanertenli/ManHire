@@ -1,7 +1,9 @@
 package com.example.ManHire.Controllers;
 
 import com.example.ManHire.Entity.Customer;
+import com.example.ManHire.Entity.Player;
 import com.example.ManHire.Services.CustomerService;
+import com.example.ManHire.Services.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -10,25 +12,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @Controller
 @ResponseBody
-@RequestMapping(value = "/api/customer")
-public class CustomerController
+@RequestMapping(value = "/api/player")
+public class PlayerController
 {
     @Autowired
-    CustomerService customerService;
+    PlayerService playerService;
     @RequestMapping(path = "/find",method = RequestMethod.GET)
-    public @ResponseBody List<Customer> find()
+    public @ResponseBody List<Player> find()
     {
-      return customerService.find();
+        return playerService.find();
     }
 
 
-    @RequestMapping(path = "/save",method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(path = "/save",method = RequestMethod.POST)
     public @ResponseBody
-    HttpStatus save(@RequestBody Customer customer)
+    HttpStatus save(@RequestBody Player player)
     {
         try
         {
-            customerService.save(customer);
+            playerService.save(player);
 
         }
         catch (Exception e)
@@ -40,16 +42,16 @@ public class CustomerController
     }
 
     @RequestMapping(path ="/findBy/{id}", method = RequestMethod.GET)
-    public @ResponseBody Customer findById(@PathVariable Long id)
+    public @ResponseBody Player findById(@PathVariable Long id)
     {
-        return customerService.findById(id);
+        return playerService.findById(id);
     }
     @RequestMapping(path = "/deleteBy/{id}", method = RequestMethod.DELETE)
     public @ResponseBody HttpStatus deleteById(@PathVariable Long id)
     {
         try
         {
-            customerService.deleteById(id);
+            playerService.deleteById(id);
         }
         catch (Exception e)
         {
@@ -57,6 +59,8 @@ public class CustomerController
         }
         return HttpStatus.OK;
     }
+
+
 
 
 }

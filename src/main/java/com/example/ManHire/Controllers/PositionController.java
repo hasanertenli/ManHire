@@ -1,7 +1,7 @@
 package com.example.ManHire.Controllers;
 
-import com.example.ManHire.Entity.Customer;
-import com.example.ManHire.Services.CustomerService;
+import com.example.ManHire.Entity.Position;
+import com.example.ManHire.Services.PositionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -10,25 +10,25 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @Controller
 @ResponseBody
-@RequestMapping(value = "/api/customer")
-public class CustomerController
+@RequestMapping(value = "/api/position")
+public class PositionController
 {
     @Autowired
-    CustomerService customerService;
+    PositionService positionService;
     @RequestMapping(path = "/find",method = RequestMethod.GET)
-    public @ResponseBody List<Customer> find()
+    public @ResponseBody List<Position> find()
     {
-      return customerService.find();
+        return positionService.find();
     }
 
 
-    @RequestMapping(path = "/save",method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(path = "/save",method = RequestMethod.POST)
     public @ResponseBody
-    HttpStatus save(@RequestBody Customer customer)
+    HttpStatus save(@RequestBody Position position)
     {
         try
         {
-            customerService.save(customer);
+            positionService.save(position);
 
         }
         catch (Exception e)
@@ -40,16 +40,16 @@ public class CustomerController
     }
 
     @RequestMapping(path ="/findBy/{id}", method = RequestMethod.GET)
-    public @ResponseBody Customer findById(@PathVariable Long id)
+    public @ResponseBody Position findById(@PathVariable Long id)
     {
-        return customerService.findById(id);
+        return positionService.findById(id);
     }
     @RequestMapping(path = "/deleteBy/{id}", method = RequestMethod.DELETE)
     public @ResponseBody HttpStatus deleteById(@PathVariable Long id)
     {
         try
         {
-            customerService.deleteById(id);
+            positionService.deleteById(id);
         }
         catch (Exception e)
         {

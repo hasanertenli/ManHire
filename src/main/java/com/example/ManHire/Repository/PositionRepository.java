@@ -1,19 +1,14 @@
 package com.example.ManHire.Repository;
 
-import com.example.ManHire.Entity.Customer;
+import com.example.ManHire.Entity.Position;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-
 @Repository
-public interface CustomerRepository extends CrudRepository<Customer, Long>
+public interface PositionRepository extends CrudRepository<Position, Long>
 {
-    List<Customer> findAll();
-    Customer findCustomerById(@Param("id") Long id);
-
-
-
-
+    List<Position> findAll();
+    Position findPositionById(@Param("id") Long id);
 }
