@@ -10,5 +10,4 @@ import java.util.List;
 public interface PositionRepository extends CrudRepository<Position, Long>
 {
     List<Position> findAll();
-    Position findPositionById(@Param("id") Long id);
 }

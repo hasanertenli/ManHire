@@ -26,7 +26,7 @@ public class PositionService
 
     public Position findById(Long id)
     {
-        return positionRepository.findPositionById(id);
+        return positionRepository.findOne(id);
     }
 
     public void deleteById(Long id)

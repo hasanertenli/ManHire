@@ -1,5 +1,6 @@
 package com.example.ManHire.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -13,23 +14,20 @@ import java.util.List;
 public class Customer {
 
     @Id
-    Long id;
+    private Long id;
 
     private String name;
 
-    String surName;
+    private String surName;
 
-    int phone;
+    private int phone;
 
-    String address;
-
-
-    public Long getId() {
-        return id;
-    }
+    private String address;
 
 
+
+    @JsonBackReference
     @ManyToMany(mappedBy = "customerList")
-    List<Player> playerList;
+    List<Player> player;
 
 }

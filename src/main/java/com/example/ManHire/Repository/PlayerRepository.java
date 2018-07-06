@@ -10,5 +10,4 @@ import java.util.List;
 public interface PlayerRepository extends CrudRepository<Player,Long>
 {
     List<Player> findAll();
-    Player findPlayerById(@Param("id") Long id);
 }

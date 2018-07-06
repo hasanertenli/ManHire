@@ -25,7 +25,7 @@ public class CustomerService
 
     public Customer findById(Long id)
     {
-        return customerRepository.findCustomerById(id);
+        return customerRepository.findOne(id);
     }
 
     public void deleteById(Long id)

@@ -1,6 +1,7 @@
 package com.example.ManHire.Entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -14,23 +15,24 @@ import java.util.List;
 public class Player
 {
     @Id
-    Long id;
+   private Long id;
 
-    String name;
-    String surName;
-    int age;
-    String level;
-    float price;
-    String city;
+    private String name;
+    private String surName;
+    private int age;
+    private String level;
+    private float price;
+    private String city;
 
 
-    @JoinTable(name = "Player_Customer", joinColumns= {@JoinColumn(name = "Player_ID", referencedColumnName = "id")},
-    inverseJoinColumns = {@JoinColumn(name = "Customer_ID",referencedColumnName = "id")})
-    @ManyToMany(fetch = FetchType.EAGER)
+
+
+    @ManyToMany
     List<Customer> customerList;
 
 
-    @ManyToMany(mappedBy = "playerList")
+
+    @ManyToMany
     List<Position> positionList;
 
 }

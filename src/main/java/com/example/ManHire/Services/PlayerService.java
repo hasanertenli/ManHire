@@ -28,7 +28,7 @@ public class PlayerService
 
     public Player findById(Long id)
     {
-        return playerRepository.findPlayerById(id);
+        return playerRepository.findOne(id);
     }
 
     public void deleteById(Long id)
