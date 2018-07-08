@@ -20,7 +20,7 @@ public class Customer {
 
     private String surName;
 
-    private int phone;
+    private long phone;
 
     private String address;
 
