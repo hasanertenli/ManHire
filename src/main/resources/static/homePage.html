@@ -1,0 +1,69 @@
+<!--<script src="angular/angular.min.js"></script>-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"
+        xmlns:width="http://www.w3.org/1999/xhtml"></script>
+
+<script src="angular/angular-resource.min.js"></script>
+<script src="/player.js"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+        }
+        th {
+            text-align: left;
+        }
+        table#t01 tr:nth-child(even) {
+            background-color: #eee;
+        }
+        table#t01 tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        table#t01 th {
+            background-color: black;
+            color: white;
+    </style>
+</head>
+<body>
+<div ng-init="pageOpen()" ng-app="ManHireApplication" ng-controller="PlayerController">
+
+
+        <table id="t01"
+               style = width:100%>
+            <thead>
+            <tr >
+                <th>Player Name</th>
+                <th>Player Surname</th>
+                <th>Age</th>
+                <th>Level</th>
+                <th>Price</th>
+                <th>City</th>
+            </tr>
+
+
+            </thead>
+
+            <tbody>
+            <tr ng-repeat="player in playerList">
+                <td>{{player.name}}</td>
+                <td>{{player.surName}}</td>
+                <td>{{player.age}}</td>
+                <td>{{player.level}}</td>
+                <td>{{player.price}}</td>
+                <td>{{player.city}}</td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+</div>
+</body>
+</html>
