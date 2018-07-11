@@ -11,6 +11,7 @@ import java.util.List;
 @Data
 public class Customer {
 
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
 

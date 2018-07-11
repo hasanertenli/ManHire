@@ -1,41 +1,56 @@
 <!--<script src="angular/angular.min.js"></script>-->
+
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"
         xmlns:width="http://www.w3.org/1999/xhtml"></script>
-
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="angular/angular-resource.min.js"></script>
 <script src="/player.js"></script>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <title>Title</title>
-    <style>
-        table, th, td {
-            border: 1px solid black;
-            border-collapse: collapse;
-        }
-        th, td {
-            padding: 5px;
-        }
-        th {
-            text-align: left;
-        }
-        table#t01 tr:nth-child(even) {
-            background-color: #eee;
-        }
-        table#t01 tr:nth-child(odd) {
-            background-color: #fff;
-        }
-        table#t01 th {
-            background-color: black;
-            color: white;
-    </style>
+
+
+
+
 </head>
 <body>
-<div ng-init="pageOpen()" ng-app="ManHireApplication" ng-controller="PlayerController">
+
+<div ng-init="pageOpen()" ng-app="ManHireApplication" ng-controller="PlayerController" class="container">
+
+    <div class="form-group">
+        <label for="playerName">Player Name</label>
+        <input type="text" class="form-control" id="playerName" ng-model="player.name" placeholder="Player Name">
+    </div>
+    <div class="form-group">
+        <label for="playerSurName">Player Surname</label>
+        <input type="text" class="form-control" id="playerSurName" ng-model="player.surName" placeholder="Player Surname">
+    </div>
+    <div class="form-group">
+        <label for="playerAge">Age</label>
+        <input type="text" class="form-control" id="playerAge" ng-model="player.age" placeholder="Age">
+    </div>
+    <div class="form-group">
+        <label for="playerLevel">Level</label>
+        <input type="text" class="form-control" id="playerLevel" ng-model="player.level" placeholder="Level">
+    </div>
+    <div class="form-group">
+        <label for="playerPrice">Price</label>
+        <input type="text" class="form-control" id="playerPrice" ng-model="player.price" placeholder="Price">
+    </div>
+    <div class="form-group">
+        <label for="playerCity">City</label>
+        <input type="text" class="form-control" id="playerCity" ng-model="player.city" placeholder="City">
+    </div>
+    <button type="button" class="btn btn-primary" ng-click="save()">SAVE</button>
+    <h2>Player Table</h2>
 
 
-        <table id="t01"
-               style = width:100%>
+        <table class="table">
             <thead>
             <tr >
                 <th>Player Name</th>
@@ -45,7 +60,6 @@
                 <th>Price</th>
                 <th>City</th>
             </tr>
-
 
             </thead>
 
@@ -57,9 +71,9 @@
                 <td>{{player.level}}</td>
                 <td>{{player.price}}</td>
                 <td>{{player.city}}</td>
-
+                <td> <button type="button" class="btn btn-primary" ng-click="selectPlayer(player)">UPDATE</button> </td>
+                <td> <button type="button" class="btn btn-danger" ng-click="deletePlayer(player)">DELETE</button> </td>
             </tr>
-
             </tbody>
 
         </table>

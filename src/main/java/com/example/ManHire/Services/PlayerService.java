@@ -31,13 +31,9 @@ public class PlayerService
         return playerRepository.findOne(id);
     }
 
-    public void deleteById(Long id)
+    public void delete(Player player)
     {
-        playerRepository.delete(id);
+        playerRepository.delete(player);
     }
 
-    public void saveCustomer(Long id)
-    {
-
-    }
 }

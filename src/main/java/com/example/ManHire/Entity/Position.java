@@ -12,6 +12,7 @@ import java.util.List;
 @Data
 public class Position
 {
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;
 

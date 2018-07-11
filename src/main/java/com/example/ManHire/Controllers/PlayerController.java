@@ -24,7 +24,7 @@ public class PlayerController
     }
 
 
-    @RequestMapping(path = "/save",method = RequestMethod.POST)
+    @RequestMapping(path = "/save",method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
     HttpStatus save(@RequestBody Player player)
     {
@@ -42,19 +42,25 @@ public class PlayerController
     }
 
     @RequestMapping(path ="/findBy/{id}", method = RequestMethod.GET)
+
     public @ResponseBody Player findById(@PathVariable Long id)
     {
         return playerService.findById(id);
     }
-    @RequestMapping(path = "/deleteBy/{id}", method = RequestMethod.DELETE)
-    public @ResponseBody HttpStatus deleteById(@PathVariable Long id)
+
+
+
+
+    @RequestMapping(path = "/delete", method = RequestMethod.POST)
+    public @ResponseBody HttpStatus delete(@RequestBody Player player)
     {
         try
         {
-            playerService.deleteById(id);
+            playerService.delete(player);
         }
         catch (Exception e)
         {
+            e.printStackTrace();
             return HttpStatus.BAD_REQUEST;
         }
         return HttpStatus.OK;

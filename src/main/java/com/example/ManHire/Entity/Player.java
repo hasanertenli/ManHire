@@ -9,6 +9,7 @@ import java.util.List;
 @Data
 public class Player
 {
+ @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
    private Long id;
 
