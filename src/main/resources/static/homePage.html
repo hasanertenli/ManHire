@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>Title</title>
+    <title>Player</title>
 
 
 
@@ -23,9 +23,9 @@
 <div ng-init="pageOpen()" ng-app="ManHireApplication" ng-controller="PlayerController" class="container">
 
     <div class="form-group">
-        <label for="playerName">Player Name</label>
-        <input type="text" class="form-control" id="playerName" ng-model="player.name" placeholder="Player Name">
-    </div>
+    <label for="playerName">Player Name</label>
+    <input type="text" class="form-control" id="playerName" ng-model="player.name" placeholder="Player Name">
+</div>
     <div class="form-group">
         <label for="playerSurName">Player Surname</label>
         <input type="text" class="form-control" id="playerSurName" ng-model="player.surName" placeholder="Player Surname">
@@ -46,6 +46,10 @@
         <label for="playerCity">City</label>
         <input type="text" class="form-control" id="playerCity" ng-model="player.city" placeholder="City">
     </div>
+    <div>
+        <label>Position:</label>
+    <select ng-options="h.positionName for h in positionList track by h.id" ng-model="denemeList"></select>
+    </div>
     <button type="button" class="btn btn-primary" ng-click="save()">SAVE</button>
     <h2>Player Table</h2>
 
@@ -59,6 +63,9 @@
                 <th>Level</th>
                 <th>Price</th>
                 <th>City</th>
+                <th>Position</th>
+                <th>Güncelleme</th>
+                <th>Silme</th>
             </tr>
 
             </thead>
@@ -71,6 +78,7 @@
                 <td>{{player.level}}</td>
                 <td>{{player.price}}</td>
                 <td>{{player.city}}</td>
+                <td ng-repeat="position in player.positionList">{{position.positionName}}</td>
                 <td> <button type="button" class="btn btn-primary" ng-click="selectPlayer(player)">UPDATE</button> </td>
                 <td> <button type="button" class="btn btn-danger" ng-click="deletePlayer(player)">DELETE</button> </td>
             </tr>

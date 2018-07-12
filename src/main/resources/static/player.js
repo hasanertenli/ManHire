@@ -4,11 +4,13 @@ function f($scope,$http) {
 
     $scope.player = {};
     $scope.playerList = [];
+    $scope.denemeList = "";
     $scope.openCloseNewPlayer = false;
 
     $scope.pageOpen = function()
     {
         $scope.findPlayer();
+        $scope.findPosition();
     }
 
     $scope.findPlayer = function ()
@@ -20,10 +22,13 @@ function f($scope,$http) {
     }
     $scope.save = function ()
     {
+        $scope.player.positionList.push($scope.denemeList);
         var h = $http.post("/api/player/save", $scope.player)
         h.then(function (response)
         {
             alert(response.data);
+            $scope.player = {};
+            $scope.denemeList ="";
             $scope.findPlayer();
         });
     }
@@ -42,10 +47,12 @@ function f($scope,$http) {
             $scope.findPlayer()
         })
     }
-    // $scope.deletePlayerList = function (player)
-    // {
-    //     $scope.player= player
-    //     #scope.deletePlayer(player)
-    //     #scope.pageOpen()
-    // }
+    $scope.findPosition = function ()
+    {
+        var pos = $http.get('/api/position/find')
+        pos.then(function (response) {
+            $scope.positionList =response.data;
+        });
+    }
+
 });

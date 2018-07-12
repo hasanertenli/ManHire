@@ -1,0 +1,61 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"
+        xmlns:width="http://www.w3.org/1999/xhtml"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="angular/angular-resource.min.js"></script>
+<script src="/customer.js"></script>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Customer</title>
+</head>
+<body>
+<div ng-init="pageOpen()" ng-app="ManHireApplication" ng-controller="CustomerController" class="container">
+    <div class="form-group">
+        <label for="customerName">Customer Name</label>
+        <input type="text" class="form-control" id="customerName" ng-model="customer.name" placeholder="Customer Name">
+    </div>
+    <div class="form-group">
+        <label for="customerSurName">Customer Surname</label>
+        <input type="text" class="form-control" id="customerSurName" ng-model="customer.surName" placeholder="Customer Surname">
+    </div>
+    <div class="form-group">
+        <label for="customerPhone">Phone</label>
+        <input type="text" class="form-control" id="customerPhone" ng-model="customer.phone" placeholder="Phone">
+    </div>
+    <div class="form-group">
+        <label for="customerAddress">Address</label>
+        <input type="text" class="form-control" id="customerAddress" ng-model="customer.address" placeholder="Address">
+    </div>
+    <button type="button" class="btn btn-success" ng-click="save()">SAVE</button>
+<table class="table">
+    <thead>
+    <tr >
+        <th>Customer Name</th>
+        <th>Customer Surname</th>
+        <th>Phone</th>
+        <th>Addrees</th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+    <tr ng-repeat="customer in customerList">
+        <td>{{customer.name}}</td>
+        <td>{{customer.surName}}</td>
+        <td>{{customer.phone}}</td>
+        <td>{{customer.address}}</td>
+        <td> <button type="button" class="btn btn-primary" ng-click="selectCustomer(customer)">UPDATE</button> </td>
+        <td> <button type="button" class="btn btn-danger" ng-click="deleteCustomer(customer)">DELETE</button> </td>
+    </tr>
+    </tbody>
+
+</table>
+</div>
+
+</body>
+</html>

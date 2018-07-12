@@ -16,7 +16,7 @@ public class Position
     @Id
     private Long id;
 
-    private String position;
+    private String positionName;
 
 
     @JsonBackReference

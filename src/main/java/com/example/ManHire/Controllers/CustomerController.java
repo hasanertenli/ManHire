@@ -44,12 +44,12 @@ public class CustomerController
     {
         return customerService.findById(id);
     }
-    @RequestMapping(path = "/deleteBy/{id}", method = RequestMethod.DELETE)
-    public @ResponseBody HttpStatus deleteById(@PathVariable Long id)
+    @RequestMapping(path = "/delete", method = RequestMethod.POST)
+    public @ResponseBody HttpStatus delete(@RequestBody Customer customer)
     {
         try
         {
-            customerService.deleteById(id);
+            customerService.delete(customer);
         }
         catch (Exception e)
         {
