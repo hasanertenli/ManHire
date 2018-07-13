@@ -2,6 +2,7 @@ package com.example.ManHire.Controllers;
 
 import com.example.ManHire.Entity.Position;
 import com.example.ManHire.Services.PositionService;
+import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -44,12 +45,12 @@ public class PositionController
     {
         return positionService.findById(id);
     }
-    @RequestMapping(path = "/deleteBy/{id}", method = RequestMethod.DELETE)
-    public @ResponseBody HttpStatus deleteById(@PathVariable Long id)
+    @RequestMapping(path = "/delete", method = RequestMethod.POST)
+    public @ResponseBody HttpStatus deleteById(@PathVariable Position position)
     {
         try
         {
-            positionService.deleteById(id);
+            positionService.delete(position);
         }
         catch (Exception e)
         {

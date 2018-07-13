@@ -8,10 +8,9 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name= "Position")
+@Table(name = "Position")
 @Data
-public class Position
-{
+public class Position {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
     private Long id;

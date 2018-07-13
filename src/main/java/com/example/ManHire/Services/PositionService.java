@@ -29,8 +29,8 @@ public class PositionService
         return positionRepository.findOne(id);
     }
 
-    public void deleteById(Long id)
+    public void delete(Position position)
     {
-        positionRepository.delete(id);
+        positionRepository.delete(position);
     }
 }

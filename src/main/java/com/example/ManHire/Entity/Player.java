@@ -1,17 +1,17 @@
 package com.example.ManHire.Entity;
 
 import lombok.Data;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name= "Player")
+@Table(name = "Player")
 @Data
-public class Player
-{
- @GeneratedValue(strategy = GenerationType.AUTO)
+public class Player {
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
-   private Long id;
+    private Long id;
 
     private String name;
     private String surName;
@@ -21,11 +21,8 @@ public class Player
     private String city;
 
 
-
-
     @ManyToMany
     List<Customer> customerList;
-
 
 
     @ManyToMany

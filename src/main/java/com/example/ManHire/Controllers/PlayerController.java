@@ -10,63 +10,53 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 @Controller
 @ResponseBody
 @RequestMapping(value = "/api/player")
-public class PlayerController
-{
+public class PlayerController {
     @Autowired
     PlayerService playerService;
-    @RequestMapping(path = "/find",method = RequestMethod.GET)
-    public @ResponseBody List<Player> find()
-    {
+
+    @RequestMapping(path = "/find", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Player> find() {
         return playerService.find();
     }
 
 
-    @RequestMapping(path = "/save",method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(path = "/save", method = RequestMethod.POST, consumes = "application/json")
     public @ResponseBody
-    HttpStatus save(@RequestBody Player player)
-    {
-        try
-        {
+    HttpStatus save(@RequestBody Player player) {
+        try {
             playerService.save(player);
 
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return HttpStatus.BAD_REQUEST;
         }
 
         return HttpStatus.OK;
     }
 
-    @RequestMapping(path ="/findBy/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/findBy/{id}", method = RequestMethod.GET)
 
-    public @ResponseBody Player findById(@PathVariable Long id)
-    {
+    public @ResponseBody
+    Player findById(@PathVariable Long id) {
         return playerService.findById(id);
     }
 
 
-
-
     @RequestMapping(path = "/delete", method = RequestMethod.POST)
-    public @ResponseBody HttpStatus delete(@RequestBody Player player)
-    {
-        try
-        {
+    public @ResponseBody
+    HttpStatus delete(@RequestBody Player player) {
+        try {
             playerService.delete(player);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return HttpStatus.BAD_REQUEST;
         }
         return HttpStatus.OK;
     }
-
-
 
 
 }

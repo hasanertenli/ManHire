@@ -12,6 +12,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="test picklist">
+    <meta name="author" content="jason zhang">
     <title>Player</title>
 
 
@@ -46,10 +50,11 @@
         <label for="playerCity">City</label>
         <input type="text" class="form-control" id="playerCity" ng-model="player.city" placeholder="City">
     </div>
-    <div>
+    <div class="col-md-4">
         <label>Position:</label>
     <select ng-options="h.positionName for h in positionList track by h.id" ng-model="denemeList"></select>
     </div>
+
     <button type="button" class="btn btn-primary" ng-click="save()">SAVE</button>
     <h2>Player Table</h2>
 
@@ -64,13 +69,12 @@
                 <th>Price</th>
                 <th>City</th>
                 <th>Position</th>
-                <th>Güncelleme</th>
-                <th>Silme</th>
             </tr>
 
             </thead>
 
             <tbody>
+            <div >
             <tr ng-repeat="player in playerList">
                 <td>{{player.name}}</td>
                 <td>{{player.surName}}</td>
@@ -78,10 +82,21 @@
                 <td>{{player.level}}</td>
                 <td>{{player.price}}</td>
                 <td>{{player.city}}</td>
-                <td ng-repeat="position in player.positionList">{{position.positionName}}</td>
-                <td> <button type="button" class="btn btn-primary" ng-click="selectPlayer(player)">UPDATE</button> </td>
-                <td> <button type="button" class="btn btn-danger" ng-click="deletePlayer(player)">DELETE</button> </td>
+                 <td><picklist  name="pktest" size="20"  data-picklist="" data-pick-model="denemeList" />
+                    <li data-ng-repeat="s in player.positionList">{{s.positionName}}
+                        <a href="#" ng-click="deneme(s.positionName)">
+                            <span class="glyphicon glyphicon-remove-circle pull-right"></span>
+                        </a></li>
+
+                 </td>
+                <td>  <a href="#" ng-click="selectPlayer(player)">
+                    <span class="glyphicon glyphicon-refresh"></span>
+                </a> </td>
+                <td>  <a href="#" ng-click="deletePlayer(player)">
+                    <span class="glyphicon glyphicon-remove-circle"></span>
+                </a></td>
             </tr>
+            </div>
             </tbody>
 
         </table>
